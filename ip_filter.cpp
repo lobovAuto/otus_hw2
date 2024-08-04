@@ -71,9 +71,7 @@ int main(int argc, char const *argv[])
             }
         });
 
- 
-        for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
-        {
+        auto print_addr{ [](std::vector<std::vector<std::string> >::const_iterator ip){
             for(std::vector<std::string>::const_iterator ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
             {
                 if (ip_part != ip->cbegin())
@@ -83,6 +81,12 @@ int main(int argc, char const *argv[])
                 }
                 std::cout << *ip_part;
             }
+            }
+        };
+        
+        for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
+        {
+            print_addr(ip);
             std::cout << std::endl;
         }
 
@@ -99,15 +103,7 @@ int main(int argc, char const *argv[])
         for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
         {
             if (std::stoi((*ip)[0])!=1){continue;}
-            for(std::vector<std::string>::const_iterator ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
-            {
-                if (ip_part != ip->cbegin())
-                {
-                    std::cout << ".";
-
-                }
-                std::cout << *ip_part;
-            }
+            print_addr(ip);
             std::cout << std::endl;
         }
 
@@ -123,15 +119,7 @@ int main(int argc, char const *argv[])
         {
             if (std::stoi((*ip)[0])!=46){continue;}
             if (std::stoi((*ip)[1])!=70){continue;}
-            for(std::vector<std::string>::const_iterator ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
-            {
-                if (ip_part != ip->cbegin())
-                {
-                    std::cout << ".";
-
-                }
-                std::cout << *ip_part;
-            }
+            print_addr(ip);
             std::cout << std::endl;
         }
 
@@ -146,15 +134,7 @@ int main(int argc, char const *argv[])
         for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
         {
             if ((std::stoi((*ip)[0])!=46)&&(std::stoi((*ip)[1])!=46)&&(std::stoi((*ip)[2])!=46)&&(std::stoi((*ip)[3])!=46)){continue;}
-            for(std::vector<std::string>::const_iterator ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
-            {
-                if (ip_part != ip->cbegin())
-                {
-                    std::cout << ".";
-
-                }
-                std::cout << *ip_part;
-            }
+            print_addr(ip);
             std::cout << std::endl;
         }
 
