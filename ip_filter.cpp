@@ -119,6 +119,21 @@ int main(int argc, char const *argv[])
 
         // TODO filter by first and second bytes and output
         // ip = filter(46, 70)
+        for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
+        {
+            if (std::stoi((*ip)[0])!=46){continue;}
+            if (std::stoi((*ip)[1])!=70){continue;}
+            for(std::vector<std::string>::const_iterator ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
+            {
+                if (ip_part != ip->cbegin())
+                {
+                    std::cout << ".";
+
+                }
+                std::cout << *ip_part;
+            }
+            std::cout << std::endl;
+        }
 
         // 46.70.225.39
         // 46.70.147.26
@@ -127,6 +142,21 @@ int main(int argc, char const *argv[])
 
         // TODO filter by any byte and output
         // ip = filter_any(46)
+
+        for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
+        {
+            if ((std::stoi((*ip)[0])!=46)&&(std::stoi((*ip)[1])!=46)&&(std::stoi((*ip)[2])!=46)&&(std::stoi((*ip)[3])!=46)){continue;}
+            for(std::vector<std::string>::const_iterator ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
+            {
+                if (ip_part != ip->cbegin())
+                {
+                    std::cout << ".";
+
+                }
+                std::cout << *ip_part;
+            }
+            std::cout << std::endl;
+        }
 
         // 186.204.34.46
         // 186.46.222.194
