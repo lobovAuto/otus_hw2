@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 // ("",  '.') -> [""]
 // ("11", '.') -> ["11"]
@@ -42,7 +43,35 @@ int main(int argc, char const *argv[])
         }
 
         // TODO reverse lexicographically sort
+        
+        std::sort(begin(ip_pool),end(ip_pool), [](const std::vector<std::string> &a, const std::vector<std::string> &b)
+        { 
+            if (std::stoi(a[0])>std::stoi(b[0])){
+                return true; 
+            }
+            if (std::stoi(a[0])<std::stoi(b[0])){
+                return false; 
+            }
+            if (std::stoi(a[1])>std::stoi(b[1])){
+                return true;
+            }
+            if (std::stoi(a[1])<std::stoi(b[1])){
+                return false;
+            }
+            if (std::stoi(a[2])>std::stoi(b[2])){
+                return true;
+            }
+            if (std::stoi(a[2])<std::stoi(b[2])){
+                return false;
+            }
+            if (std::stoi(a[3])>std::stoi(b[3])){
+                return true;
+            }else{
+                return false;
+            }
+        });
 
+ 
         for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
         {
             for(std::vector<std::string>::const_iterator ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
