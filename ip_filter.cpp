@@ -96,6 +96,20 @@ int main(int argc, char const *argv[])
 
         // TODO filter by first byte and output
         // ip = filter(1)
+        for(std::vector<std::vector<std::string> >::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
+        {
+            if (std::stoi((*ip)[0])!=1){continue;}
+            for(std::vector<std::string>::const_iterator ip_part = ip->cbegin(); ip_part != ip->cend(); ++ip_part)
+            {
+                if (ip_part != ip->cbegin())
+                {
+                    std::cout << ".";
+
+                }
+                std::cout << *ip_part;
+            }
+            std::cout << std::endl;
+        }
 
         // 1.231.69.33
         // 1.87.203.225
